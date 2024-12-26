@@ -36,8 +36,32 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         setupTracks()
         createPlayer()
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let location = touch.previousLocation(in: self)
+            let node = self.nodes(at: location).first
+            
+            if node?.name == "right" || node?.name == "rightimg" {
+                print("Move right")
+            }
+            else if node?.name == "up" || node?.name == "upimg" {
+                print("Move up")
+            }
+            else if node?.name == "down" || node?.name == "downimg" {
+                print("Move down")
+            }
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        tracksArray?.first?.color = UIColor.green
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
     }
     
     
